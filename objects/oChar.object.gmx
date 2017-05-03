@@ -69,11 +69,12 @@ file_text_write_string(file, unlocked);
 
 file_text_close(file);
 
-for (var i = 0; i &lt; 50; i++) {
-    instance_create(x, y, oParticle);
-    
-    instance_destroy();
+for (i = 0; i &lt; 32; ++i) {
+    with (instance_create(x + random_range(-12, 12), y + random_range(-12, 12), oBlood)) {
+        image_blend = other.image_blend;
+    }
 }
+instance_destroy();
 </string>
           </argument>
         </arguments>
