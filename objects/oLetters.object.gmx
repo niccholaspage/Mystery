@@ -57,6 +57,8 @@ if (file_exists("letters.txt")) {
 
 if (string_pos(incompleteChar, incompleted) = 0) {
     incompletedAndSpacing = completed;
+    
+    http_get("http://nicholasnassar.com/mystery/all_letters_hit");
 } else {
     incompletedAndSpacing = "";
     
