@@ -74,7 +74,10 @@ draw_set_color(c_white);
           <argument>
             <kind>1</kind>
             <string>if (pressed) {
-    room_goto(room_link);
+    with (instance_create(0, 0, oFade)) {
+        room_link = other.room_link;
+    }
+    //room_goto(room_link);
 }
 </string>
           </argument>
