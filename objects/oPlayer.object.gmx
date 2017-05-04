@@ -243,7 +243,8 @@ babyShake = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Actual collision checks + movement
+            <string>if (global.paused) exit;
+// Actual collision checks + movement
 var i;
 
 // Vertical
@@ -321,7 +322,8 @@ for (i = 0; i &lt; abs(h); ++i) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Update particle trail
+            <string>if (global.paused) exit;
+// Update particle trail
 ydrift = -sign(v);
 xdrift = -sign(h);
 
@@ -369,7 +371,8 @@ TrailScatter(trail, xscatter, yscatter);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var temp;
+            <string>if (global.paused) exit;
+var temp;
 
 // Check if you were onGround previous frame
 temp = onGround;
@@ -410,25 +413,23 @@ cAbove = place_meeting(x, y - 1, oParSolid);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Declare Temp Variables /////////////////////////////////////////////////////
+            <string>if (global.paused){
+    if (alarm[0] &gt; 0) alarm[0]++;
+    if (alarm[4] &gt; 0) alarm[4]++;
+    exit;
+}
+// Declare Temp Variables /////////////////////////////////////////////////////
 var kLeft, kRight, kUp, kDown, kJump, kJumpRelease, tempAccel, tempFric;
 ///////////////////////////////////////////////////////////////////////////////
 
 // Input //////////////////////////////////////////////////////////////////////
 
-/*kLeft        = keyboard_check(vk_left);
-kRight       = keyboard_check(vk_right);
-kUp          = keyboard_check(vk_up);
-kDown        = keyboard_check(vk_down);
-kJump        = keyboard_check_pressed(ord('Z'));
-kJumpRelease = keyboard_check_released(ord('Z'));*/
-
 kLeft        = leftVelocity;
 kRight       = !leftVelocity;
 kUp          = keyboard_check(vk_up);
 kDown        = keyboard_check(vk_down);
-kJump        = device_mouse_check_button_pressed(0, mb_left);
-kJumpRelease = device_mouse_check_button_released(0, mb_left);
+kJump        = !oPauseButton.pressed &amp;&amp; device_mouse_check_button_pressed(0, mb_left);
+kJumpRelease = !oPauseButton.pressed &amp;&amp; device_mouse_check_button_released(0, mb_left);
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -609,7 +610,8 @@ if (!onGround) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (state == RUN)
+            <string>if (global.paused) exit;
+if (state == RUN)
     if (random(100) &gt; 80)
         with (instance_create(x + random_range(-8, 8), bbox_bottom, oParticle))
             direction = 90 + random_range(-45, 45); 
@@ -723,6 +725,10 @@ switch (state) {
         if (cRight || cLeft)
             sprite_index = sPlayerSlide;  
     break;
+}
+
+if (global.paused) {
+    image_speed = 0;
 }
 
 // Draw particle trail

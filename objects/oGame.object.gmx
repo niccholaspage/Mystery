@@ -116,12 +116,10 @@ if (kQuit)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (surface_exists(global.pauseSurface)) {
-    draw_surface(global.pauseSurface, view_xview, view_yview);
-    
+            <string>if (global.paused) {
     draw_set_halign(fa_center);
     
-    draw_text(view_xview + view_wport[0] / 2, view_hport[0] / 2, "P!");
+    draw_text(view_xview + view_wport[0] / 2, view_hport[0] / 2, "Paused!");
 }
 </string>
           </argument>
