@@ -75,7 +75,16 @@ instance_create(0, 0, oPauseButton);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Initialize input variables
+            <string>//Check for back button
+if (keyboard_check_pressed(vk_backspace)) {
+    if (!global.paused) {
+        global.paused = true;
+    } else {
+        game_restart();
+    }
+}
+
+// Initialize input variables
 var kRestart, kQuit;
 
 kRestart   = keyboard_check_pressed(ord('R'));
@@ -115,7 +124,7 @@ if (kQuit)
     
     draw_set_halign(fa_center);
     
-    draw_text(view_xview[0] + view_wview[0] / 2, view_yview[0] + view_hview[0] / 2, "PAUSED!");
+    draw_text_ext(view_xview[0] + view_wport[0] / 2, view_yview[0] + view_hport[0] / 2, "PAUSED!#PRESS BACK TO GO#TO THE MAIN MENU.", string_height("L") + 4, room_width);
 }
 </string>
           </argument>
