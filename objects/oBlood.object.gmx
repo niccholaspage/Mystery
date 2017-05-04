@@ -82,7 +82,12 @@ fade = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed += 1;
+            <string>if (global.paused) {
+    if (alarm[0] &gt; 0) alarm[0]++;
+    exit;
+}
+
+vspeed += 1;
 
 if (fade)
     image_alpha -= 0.1;
