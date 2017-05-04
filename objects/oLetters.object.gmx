@@ -75,13 +75,17 @@ if (string_pos(incompleteChar, incompleted) = 0) {
     
     incompletedWithoutSpaces = string_replace_all(incompleted, " ", "_");
     
-    for (var i = 1; i &lt;= string_length(incompletedWithoutSpaces); i++) {
-        if (i &gt; 1) {
-            textToDraw += " ";
-        }
-        
-        textToDraw += string_char_at(incompletedWithoutSpaces, i);
+    strLength = string_length(completed); 
+    
+    for (var i = 1; i &lt; strLength; i++) {
+        textToDraw += "_ ";
     }
+    
+    textToDraw += "_##";
+    
+    textToDraw += string(strLength - string_count(incompleteChar, incompleted));
+    
+    textToDraw += " / " + string(strLength);
 }
 </string>
           </argument>
