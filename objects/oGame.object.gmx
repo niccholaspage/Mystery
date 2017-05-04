@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-99</depth>
+  <depth>-9999</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,15 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.FONT = font_add_sprite(sFont, ord(" "), 0, 1);
+            <string>font = font_add_sprite(sFont, ord(" "), 0, 1);
 
-draw_set_color(c_white);
-draw_set_font(global.FONT);
-
-fontAng = 0;
-fontDir = 1;
-
-global.pauseSurface = -1;
+draw_set_font(font);
 
 global.paused = false;
 
@@ -99,7 +93,7 @@ if (kQuit)
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="8" enumb="73">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -117,9 +111,11 @@ if (kQuit)
           <argument>
             <kind>1</kind>
             <string>if (global.paused) {
+    draw_set_color(global.levelColor);
+    
     draw_set_halign(fa_center);
     
-    draw_text(view_xview + view_wport[0] / 2, view_hport[0] / 2, "Paused!");
+    draw_text(view_xview[0] + view_wview[0] / 2, view_yview[0] + view_hview[0] / 2, "PAUSED!");
 }
 </string>
           </argument>
