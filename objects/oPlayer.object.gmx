@@ -25,18 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>length = 6; //4;
-w1 = 3;
-w2 = 5; //0;
-c1 = c_purple;
-c2 = c_purple;
-a1 = 1;
-a2 = 1;
-xscatter = 0//6;
-yscatter = 1;
-xdrift = 0;
-ydrift = 5;
-trail = TrailCreate(length, x, y);
+            <string>trail_init();
 
 //Lock stuff
 leftVelocity = false;
@@ -323,17 +312,6 @@ for (i = 0; i &lt; abs(h); ++i) {
           <argument>
             <kind>1</kind>
             <string>if (global.paused) exit;
-// Update particle trail
-ydrift = -sign(v);
-xdrift = -sign(h);
-
-if (abs(h) &gt; abs(v)) {
-    xscatter = 0;
-    yscatter = 4;
-} else {
-    xscatter = 4;
-    yscatter = 0;
-}
 
 // Standing
 if (abs(v) &lt; jumpHeight * 0.5)
@@ -346,9 +324,7 @@ if (h == 0) {
     yscatter = 2;
 }
 
-TrailUpdate(trail, x + facing, y + 2);
-TrailDrift(trail, xdrift, ydrift);
-TrailScatter(trail, xscatter, yscatter);
+trail_calculate(16);
 </string>
           </argument>
         </arguments>
@@ -732,7 +708,7 @@ if (global.paused) {
 }
 
 // Draw particle trail
-TrailDraw(trail,w1,w2,c1,c2,image_alpha, image_alpha);
+draw_trail_ext(16, image_blend, spr_zigzag, 1, 1);
 
 // Draw player
 if (onGround)
