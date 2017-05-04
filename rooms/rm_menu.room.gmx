@@ -10,7 +10,12 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>display_reset(4, false);</code>
+  <code>display_reset(4, false);
+
+if (os_type == os_windows) {
+    //Half the size so this is actually playable on Windows
+    window_set_size(540, 960);
+}</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
