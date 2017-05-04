@@ -57,7 +57,9 @@ speed = random_range(0.5, 1.5);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Fade slowly
+            <string>if (global.paused) exit;
+
+// Fade slowly
 image_alpha -= 0.05;
 
 // Destroy after faded
