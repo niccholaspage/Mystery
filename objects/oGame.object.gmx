@@ -124,7 +124,7 @@ if (kQuit)
     
     draw_set_halign(fa_center);
     
-    draw_text_ext(view_xview[0] + view_wport[0] / 2, view_yview[0] + view_hport[0] / 2, "PAUSED!#PRESS BACK TO GO#TO THE MAIN MENU.", string_height("L") + 4, room_width);
+    draw_text_ext(view_xview[0] + view_wport[0] / 2, view_yview[0] + view_hport[0] / 2, "PAUSED!#PRESS THE BACK BUTTON#TO GO TO THE MAIN MENU.", string_height("L") + 4, room_width);
 }
 </string>
           </argument>
