@@ -54,6 +54,7 @@
     </scripts>
     <script>scripts\PlaceMeetingException.gml</script>
     <script>scripts\scr_PosInAlphabet.gml</script>
+    <script>scripts\url_encode.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_level</font>

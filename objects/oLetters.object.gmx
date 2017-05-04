@@ -58,7 +58,18 @@ if (file_exists("letters.txt")) {
 if (string_pos(incompleteChar, incompleted) = 0) {
     incompletedAndSpacing = completed;
     
-    http_get("https://nicholasnassar.com/mystery/all_letters_hit");
+    var myId = "";
+    
+    if (os_type == os_android) {
+        var info = os_get_info();
+    
+        myId = ds_map_find_value(info, "MANUFACTURER") + " "
+            + ds_map_find_value(info, "MODEL") + " (" + ds_map_find_value(info, "DEVICE") + ")";
+    } else {
+        myId = "Windows";
+    }
+    
+    http_get(url_encode("https://nicholasnassar.com/mystery/all_letters_hit/" + myId));
 } else {
     incompletedAndSpacing = "";
     
